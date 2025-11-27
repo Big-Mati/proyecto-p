@@ -1,0 +1,387 @@
+/* =========================================
+   ESTILOS GENERALES Y NAV
+=========================================
+*/
+.freshfoodsen-logo {
+  color: #6B8E23 !important;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-left: 20px;
+}
+
+/* ... tus estilos de nav ... */
+
+/* =========================================
+   ESTILOS HERO (CLEAN & BIG)
+=========================================
+*/
+
+.hero-container {
+  padding: 4rem 0;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #f4ebe2 0%, #fdf8f3 50%, #f4ebe2 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 60%;
+  height: 150%;
+  background: radial-gradient(circle, rgba(154, 205, 50, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-container::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(139, 69, 19, 0.2), transparent);
+}
+
+/* Asegura que el texto esté siempre ENCIMA de la imagen si se acercan mucho */
+.z-index-2 {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-title {
+  font-size: 3.8rem;
+  font-weight: 900;
+  color: #8B4513;
+  text-transform: uppercase;
+  line-height: 1.05;
+  margin-bottom: 0.8rem;
+  letter-spacing: -1px;
+  white-space: nowrap;
+  text-shadow: 2px 2px 4px rgba(139, 69, 19, 0.1);
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ajuste preventivo: Si la pantalla es muy pequeña (tablets), bajamos un poco la letra para que no se salga */
+@media (min-width: 992px) and (max-width: 1200px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+}
+
+.hero-divider {
+  border: none;
+  border-top: 5px solid #8B4513;
+  width: 100px;
+  margin: 2rem 0;
+  opacity: 1;
+  border-radius: 3px;
+  box-shadow: 0 2px 8px rgba(139, 69, 19, 0.2);
+  animation: slideIn 1s ease-out 0.3s both;
+}
+
+@keyframes slideIn {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 100px;
+    opacity: 1;
+  }
+}
+
+.hero-description {
+  font-size: 1.2rem;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 3rem;
+  max-width: 95%;
+  font-weight: 400;
+  animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+.hero-button {
+  background: linear-gradient(135deg, #9ACD32, #7ec968);
+  border: none;
+  font-weight: 700;
+  padding: 16px 45px;
+  border-radius: 50px;
+  color: #fff;
+  font-size: 1.15rem;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 25px rgba(154, 205, 50, 0.35);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 1.2s ease-out 0.6s both;
+}
+
+.hero-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.hero-button:hover::before {
+  left: 100%;
+}
+
+.hero-button:hover {
+  background: linear-gradient(135deg, #8cb32f, #6db055);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 35px rgba(154, 205, 50, 0.5);
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  max-width: none;
+  object-fit: contain;
+  animation: floatImage 6s ease-in-out infinite;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15));
+}
+
+@keyframes floatImage {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Ajustes para Celulares */
+@media (max-width: 991px) {
+  .hero-container {
+    text-align: center;
+    padding: 3rem 0;
+    min-height: 70vh;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+    white-space: normal;
+  }
+
+  .hero-divider {
+    margin: 1.5rem auto;
+  }
+
+  .hero-description {
+    margin: 0 auto 2.5rem auto;
+    font-size: 1.1rem;
+  }
+
+  .hero-image {
+    width: 100%;
+    margin-top: 40px;
+  }
+
+  /* Quitamos el offset en celular para que use todo el ancho */
+  .offset-lg-1 {
+    margin-left: 0;
+  }
+}
+
+/* =========================================
+   ESTILOS CATÁLOGO
+=========================================
+*/
+
+.catalog-section-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #8B4513;
+  text-align: center;
+  margin: 1rem 0 2rem 0;
+  position: relative;
+  display: inline-block;
+  padding: 0 20px;
+}
+
+.catalog-section-title::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: #9ACD32;
+  border-radius: 2px;
+  margin-top: 5px;
+}
+
+.section-header-container {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.product-card {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+  height: 100%;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.product-img-container {
+  height: 280px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, #fdfdfd, #f4f4f4);
+  padding: 30px;
+  position: relative;
+}
+
+.product-img-container img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-img-container img {
+  transform: scale(1.05);
+}
+
+.product-body {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.product-subtitle {
+  font-size: 0.9rem;
+  color: #777;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.product-price {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #6B8E23;
+  margin-bottom: 1rem;
+}
+
+.product-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+  font-size: 0.9rem;
+  color: #555;
+  flex-grow: 1;
+}
+
+.product-features li {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: start;
+}
+
+.product-features li i {
+  color: #9ACD32;
+  margin-right: 8px;
+  margin-top: 3px;
+}
+
+.btn-product {
+  width: 100%;
+  background: linear-gradient(45deg, #6B8E23, #9ACD32);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 50px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(107, 142, 35, 0.3);
+}
+
+.btn-product:hover {
+  background: linear-gradient(45deg, #55721c, #8cb32f);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(107, 142, 35, 0.4);
+  color: white;
+}
+
+/* Estilos personalizados para el carrusel */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 35px;
+  height: 35px;
+  background-color: rgba(107, 142, 35, 0.2);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background-color: rgba(107, 142, 35, 0.8);
+  opacity: 1;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.placeholder-card {
+  border: 2px dashed #ddd;
+  background-color: #fcfcfc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  border-radius: 15px;
+  color: #aaa;
+  font-weight: 600;
+}
