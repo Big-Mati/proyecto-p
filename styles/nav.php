@@ -24,6 +24,9 @@
         <li class="nav-item">
           <a class="nav-link" href="Proyecto_social.php">PROYECTO SOCIAL</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="Resenas.php">RESEÑAS</a>
+        </li>
       </ul>
 
       <ul class="navbar-nav mb-2 mb-lg-0 custom-icons">
