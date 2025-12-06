@@ -594,7 +594,331 @@
         </div>
     </div>
 
+    <!-- Modal Agregar Reseña -->
+    <div class="modal fade" id="addReviewModal" tabindex="-1" aria-labelledby="addReviewModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content" style="border-radius: 24px; border: none; overflow: hidden;">
+                <div class="modal-header" style="background: linear-gradient(135deg, #5fa052, #7ec968); border: none; padding: 1.5rem 2rem;">
+                    <h5 class="modal-title text-white fw-bold" id="addReviewModalLabel">
+                        <i class="fas fa-star me-2"></i>Comparte tu Experiencia
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" style="padding: 2rem;">
+                    <form id="reviewForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold text-secondary">
+                                    <i class="fas fa-user me-2 text-success"></i>Tu Nombre
+                                </label>
+                                <input type="text" class="form-control form-control-lg" id="reviewName" placeholder="Ej: María García" required style="border-radius: 12px; border: 2px solid #e8e8e8;">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold text-secondary">
+                                    <i class="fas fa-envelope me-2 text-success"></i>Tu Email
+                                </label>
+                                <input type="email" class="form-control form-control-lg" id="reviewEmail" placeholder="tu@email.com" required style="border-radius: 12px; border: 2px solid #e8e8e8;">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label fw-bold text-secondary">
+                                <i class="fas fa-box me-2 text-success"></i>Producto Adquirido
+                            </label>
+                            <select class="form-select form-select-lg" id="reviewProduct" required style="border-radius: 12px; border: 2px solid #e8e8e8;">
+                                <option value="">Selecciona un producto...</option>
+                                <option value="FreshFoodSen Mini">FreshFoodSen Mini</option>
+                                <option value="FreshFoodSen Standard">FreshFoodSen Standard</option>
+                                <option value="FreshFoodSen Family">FreshFoodSen Family</option>
+                                <option value="Tapa SmartSeal Pro">Tapa SmartSeal Pro</option>
+                                <option value="Cargador Magnético FastCharge">Cargador Magnético FastCharge</option>
+                                <option value="Pack Frescura Total">Pack Frescura Total</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="form-label fw-bold text-secondary">
+                                <i class="fas fa-star me-2 text-success"></i>Tu Calificación
+                            </label>
+                            <div class="star-rating-input" id="starRating">
+                                <i class="fas fa-star star-input" data-rating="1"></i>
+                                <i class="fas fa-star star-input" data-rating="2"></i>
+                                <i class="fas fa-star star-input" data-rating="3"></i>
+                                <i class="fas fa-star star-input" data-rating="4"></i>
+                                <i class="fas fa-star star-input" data-rating="5"></i>
+                                <span class="rating-text ms-3" id="ratingText">Selecciona una calificación</span>
+                            </div>
+                            <input type="hidden" id="reviewRating" value="0">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="form-label fw-bold text-secondary">
+                                <i class="fas fa-comment me-2 text-success"></i>Tu Reseña
+                            </label>
+                            <textarea class="form-control" id="reviewText" rows="4" placeholder="Cuéntanos tu experiencia con el producto..." required style="border-radius: 12px; border: 2px solid #e8e8e8; resize: none;"></textarea>
+                            <small class="text-muted">Mínimo 20 caracteres</small>
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-lg text-white fw-bold" style="background: linear-gradient(135deg, #5fa052, #7ec968); border-radius: 50px; padding: 14px;">
+                                <i class="fas fa-paper-plane me-2"></i>Enviar Reseña
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Star Rating Input Styles */
+        .star-rating-input {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+        
+        .star-input {
+            font-size: 2rem;
+            color: #ddd;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-right: 5px;
+        }
+        
+        .star-input:hover,
+        .star-input.active {
+            color: #FFD700;
+            transform: scale(1.15);
+        }
+        
+        .star-input.hovered {
+            color: #FFD700;
+        }
+        
+        .rating-text {
+            font-size: 0.95rem;
+            color: #777;
+            font-weight: 500;
+        }
+        
+        #reviewForm .form-control:focus,
+        #reviewForm .form-select:focus {
+            border-color: #7ec968;
+            box-shadow: 0 0 0 3px rgba(126, 201, 104, 0.15);
+        }
+        
+        /* Success animation */
+        .review-success {
+            text-align: center;
+            padding: 3rem;
+        }
+        
+        .review-success i {
+            font-size: 4rem;
+            color: #5fa052;
+            margin-bottom: 1.5rem;
+            animation: bounceIn 0.6s ease;
+        }
+        
+        @keyframes bounceIn {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/interactions.js"></script>
+    
+    <script>
+    // Star Rating Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const stars = document.querySelectorAll('.star-input');
+        const ratingInput = document.getElementById('reviewRating');
+        const ratingText = document.getElementById('ratingText');
+        
+        const ratingTexts = {
+            0: 'Selecciona una calificación',
+            1: '😞 Muy malo',
+            2: '😐 Regular',
+            3: '🙂 Bueno',
+            4: '😊 Muy bueno',
+            5: '🤩 ¡Excelente!'
+        };
+        
+        stars.forEach(star => {
+            star.addEventListener('mouseenter', function() {
+                const rating = this.dataset.rating;
+                highlightStars(rating);
+            });
+            
+            star.addEventListener('mouseleave', function() {
+                const currentRating = ratingInput.value;
+                highlightStars(currentRating);
+            });
+            
+            star.addEventListener('click', function() {
+                const rating = this.dataset.rating;
+                ratingInput.value = rating;
+                highlightStars(rating);
+                ratingText.textContent = ratingTexts[rating];
+            });
+        });
+        
+        function highlightStars(rating) {
+            stars.forEach(star => {
+                star.classList.remove('active', 'hovered');
+                if (star.dataset.rating <= rating) {
+                    star.classList.add('active');
+                }
+            });
+        }
+        
+        // Form submission
+        const reviewForm = document.getElementById('reviewForm');
+        reviewForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const rating = ratingInput.value;
+            const reviewTextValue = document.getElementById('reviewText').value;
+            const reviewName = document.getElementById('reviewName').value;
+            const reviewProduct = document.getElementById('reviewProduct').value;
+            
+            if (rating == 0) {
+                alert('Por favor selecciona una calificación');
+                return;
+            }
+            
+            if (reviewTextValue.length < 20) {
+                alert('Tu reseña debe tener al menos 20 caracteres');
+                return;
+            }
+            
+            // Generate stars HTML based on rating
+            let starsHTML = '';
+            for (let i = 0; i < 5; i++) {
+                if (i < rating) {
+                    starsHTML += '<i class="fas fa-star"></i>';
+                } else {
+                    starsHTML += '<i class="far fa-star"></i>';
+                }
+            }
+            
+            // Create new review card HTML
+            const newReviewHTML = `
+                <div class="col-lg-4 col-md-6 new-review-animation">
+                    <div class="review-card" style="border: 2px solid #7ec968; position: relative;">
+                        <span class="new-badge">✨ Nuevo</span>
+                        <div class="review-header">
+                            <div class="review-avatar-placeholder">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="review-info">
+                                <h5>${reviewName}</h5>
+                                <span>Cliente FreshFoodSen</span>
+                                <div class="review-date">Hace un momento</div>
+                            </div>
+                        </div>
+                        <div class="review-stars">
+                            ${starsHTML}
+                        </div>
+                        <div class="product-tag">
+                            <i class="fas fa-box"></i> ${reviewProduct}
+                        </div>
+                        <i class="fas fa-quote-left quote-icon"></i>
+                        <p class="review-text">"${reviewTextValue}"</p>
+                        <div class="review-helpful">
+                            <i class="fas fa-thumbs-up"></i> 0 personas encontraron esto útil
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Add the new review to the beginning of the reviews grid
+            const reviewsGrid = document.querySelector('.container.pb-5 .row.g-4');
+            reviewsGrid.insertAdjacentHTML('afterbegin', newReviewHTML);
+            
+            // Show success message in modal
+            const modalBody = document.querySelector('#addReviewModal .modal-body');
+            modalBody.innerHTML = `
+                <div class="review-success">
+                    <i class="fas fa-check-circle"></i>
+                    <h3 class="fw-bold text-success">¡Gracias por tu reseña, ${reviewName}!</h3>
+                    <p class="text-muted">Tu reseña ya está visible en la página. ¡Apreciamos tu opinión!</p>
+                    <button type="button" class="btn btn-outline-success btn-lg mt-3" data-bs-dismiss="modal">
+                        <i class="fas fa-eye me-2"></i>Ver mi reseña
+                    </button>
+                </div>
+            `;
+            
+            // Scroll to the new review when modal closes
+            const modal = document.getElementById('addReviewModal');
+            modal.addEventListener('hidden.bs.modal', function() {
+                const newReview = document.querySelector('.new-review-animation');
+                if (newReview) {
+                    newReview.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }, { once: true });
+        });
+    });
+    </script>
+    
+    <style>
+        /* New Review Animation */
+        .new-review-animation {
+            animation: slideInNew 0.6s ease-out;
+        }
+        
+        @keyframes slideInNew {
+            from {
+                opacity: 0;
+                transform: translateY(-30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .new-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #333;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            z-index: 10;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .review-avatar-placeholder {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #5fa052, #7ec968);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.2rem;
+            box-shadow: 0 8px 20px rgba(95, 160, 82, 0.25);
+            border: 3px solid #fff;
+        }
+        
+        .review-avatar-placeholder i {
+            font-size: 1.8rem;
+            color: white;
+        }
+    </style>
 </body>
 </html>
