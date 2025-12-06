@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proyecto Social - FRESHFOODSEN</title>
+    <title>"Alimentos que Valen" - FRESHFOODSEN</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,12 +39,64 @@
         .social-hero h1 {
             font-size: 4.5rem;
             font-weight: 900;
-            color: white;
+            color: #ffffff;
             position: relative;
             z-index: 1;
-            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            letter-spacing: -1px;
+            letter-spacing: 3px;
             text-align: center;
+            text-transform: uppercase;
+            text-shadow: 
+                0 0 30px rgba(126, 201, 104, 0.8),
+                0 0 60px rgba(126, 201, 104, 0.4),
+                0 4px 15px rgba(0, 0, 0, 0.5);
+            animation: titleGlow 2.5s ease-in-out infinite alternate, slideIn 1s ease-out;
+        }
+        
+        .social-hero h1::after {
+            content: '🥗 Reduciendo el desperdicio alimentario 🌱';
+            position: absolute;
+            bottom: -45px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.1rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: none;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            white-space: nowrap;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.5s forwards;
+        }
+        
+        @keyframes titleGlow {
+            0% { 
+                text-shadow: 
+                    0 0 30px rgba(126, 201, 104, 0.8),
+                    0 0 60px rgba(126, 201, 104, 0.4),
+                    0 4px 15px rgba(0, 0, 0, 0.5);
+            }
+            100% { 
+                text-shadow: 
+                    0 0 40px rgba(200, 230, 111, 1),
+                    0 0 80px rgba(126, 201, 104, 0.6),
+                    0 4px 15px rgba(0, 0, 0, 0.5);
+            }
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
         }
         
         .about-section-row {
@@ -205,6 +257,129 @@
         .delay-200 { transition-delay: 0.2s; }
         .delay-300 { transition-delay: 0.3s; }
         
+        /* Premium Projection 2026 Section */
+        .projection-card {
+            background: linear-gradient(135deg, 
+                rgba(95, 160, 82, 0.08) 0%, 
+                rgba(255, 255, 255, 0.95) 30%, 
+                rgba(255, 255, 255, 0.98) 70%, 
+                rgba(200, 230, 111, 0.1) 100%);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .projection-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #5fa052, #7ec968, #c8e66f, #7ec968, #5fa052);
+            background-size: 200% 100%;
+            animation: gradientMove 3s ease-in-out infinite;
+        }
+        
+        .projection-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #7ec968, transparent);
+            border-radius: 3px;
+        }
+        
+        @keyframes gradientMove {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .projection-icon {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #5fa052 0%, #7ec968 50%, #c8e66f 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            box-shadow: 
+                0 10px 30px rgba(95, 160, 82, 0.4),
+                0 0 0 8px rgba(126, 201, 104, 0.15),
+                0 0 0 16px rgba(126, 201, 104, 0.08);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .projection-icon i {
+            font-size: 2.5rem;
+            color: white;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .projection-title {
+            font-size: 2.8rem !important;
+            font-weight: 800;
+            background: linear-gradient(135deg, #5fa052, #7ec968, #5fa052);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientText 4s ease-in-out infinite;
+            margin-bottom: 0.5rem !important;
+        }
+        
+        .projection-title::after {
+            display: none;
+        }
+        
+        @keyframes gradientText {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .projection-subtitle {
+            display: inline-block;
+            background: linear-gradient(135deg, #5fa052, #7ec968);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(95, 160, 82, 0.3);
+        }
+        
+        .projection-text {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #2C3E25;
+            margin-bottom: 1.5rem !important;
+            max-width: 850px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .projection-text:last-child {
+            margin-bottom: 0 !important;
+        }
+        
+        .projection-highlight {
+            color: #5fa052;
+            font-weight: 700;
+        }
+        
+        
         @media (max-width: 991px) {
             .social-hero {
                 height: 40vh;
@@ -240,7 +415,7 @@
     <!-- Hero Section -->
     <div class="social-hero reveal-on-scroll">
         <div class="container">
-            <h1>Proyecto Social</h1>
+            <h1>Alimentos que Valen</h1>
         </div>
     </div>
 
@@ -293,17 +468,20 @@
         <!-- Section 3: Future Vision (Full Width) -->
         <div class="row reveal-on-scroll delay-100">
             <div class="col-12">
-                <div class="about-card text-center">
-                    <div class="icon-badge mx-auto">
+                <div class="about-card projection-card text-center">
+                    <div class="projection-icon">
                         <i class="fas fa-calendar-alt"></i>
                     </div>
-                    <h2>Proyección 2026</h2>
-                    <p class="lead mb-4" style="max-width: 800px; margin-left: auto; margin-right: auto;">
-                        El proyecto se desarrollará durante seis a ocho meses en el año 2026, utilizando escuelas, centros barriales y espacios públicos de Cieneguilla.
-                    </p>
-                    <p style="max-width: 900px; margin-left: auto; margin-right: auto;">
-                        Durante todo el proceso acompañaremos a la comunidad con actividades variadas, seguimiento constante y oportunidades de participación. Nuestro propósito final es construir una cultura local que valore los alimentos, reduzca el desperdicio y fortalezca la unión entre los habitantes mediante prácticas sostenibles que beneficien a todos.
-                    </p>
+                    <h2 class="projection-title">Proyección 2026</h2>
+                    <span class="projection-subtitle">🌱 Visión a futuro</span>
+                    <div style="max-width: 900px; margin: 0 auto;">
+                        <p class="projection-text">
+                            El proyecto <span class="projection-highlight">"Alimentos que Valen"</span> se desarrollará durante <span class="projection-highlight">seis a ocho meses</span> en el año 2026, utilizando escuelas, centros barriales y espacios públicos de Cieneguilla.
+                        </p>
+                        <p class="projection-text">
+                            Durante todo el proceso acompañaremos a la comunidad con actividades variadas, seguimiento constante y oportunidades de participación. Nuestro propósito final es construir una <span class="projection-highlight">cultura local que valore los alimentos</span>, reduzca el desperdicio y fortalezca la unión entre los habitantes mediante prácticas sostenibles que beneficien a todos.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
